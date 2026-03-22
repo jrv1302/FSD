@@ -1,0 +1,167 @@
+/* FinComplaints AI – Custom Styles
+   Uses Bootstrap 5 as base; only overrides & additions here */
+
+/* ── CSS Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --primary:   #4361ee;
+  --secondary: #3a0ca3;
+  --accent:    #f72585;
+  --bg-light:  #f8f9fc;
+  --text-muted: #6c757d;
+  --radius:    12px;
+  --shadow:    0 4px 20px rgba(0,0,0,.08);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+body {
+  background: var(--bg-light);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #212529;
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────────────────── */
+.navbar-custom {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  box-shadow: 0 2px 15px rgba(67,97,238,.3);
+}
+
+.brand-ai {
+  color: #fbbf24;
+  font-style: italic;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+.footer-custom {
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a0050 100%);
+  color: #fff;
+}
+
+/* ── Hero Section ───────────────────────────────────────────────────────────── */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  clip-path: ellipse(120% 100% at 50% 0%);
+  padding-bottom: 80px !important;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: .85rem;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Category Cards ─────────────────────────────────────────────────────────── */
+.category-card {
+  border-radius: var(--radius) !important;
+  transition: transform .2s, box-shadow .2s;
+}
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow) !important;
+}
+
+.cat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── How It Works Steps ─────────────────────────────────────────────────────── */
+.step-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform .2s;
+}
+.step-card:hover { transform: translateY(-4px); }
+
+.step-number {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ── Auth Cards ─────────────────────────────────────────────────────────────── */
+.auth-section { min-height: calc(100vh - 180px); }
+
+.auth-card {
+  border-radius: var(--radius) !important;
+}
+
+.auth-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(67,97,238,.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Success Page ───────────────────────────────────────────────────────────── */
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: #d1fae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-card { border-radius: var(--radius) !important; }
+
+.result-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  color: #fff;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+}
+
+.category-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 28px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: .4px;
+  box-shadow: 0 4px 15px rgba(67,97,238,.4);
+}
+
+/* ── Dashboard KPI Cards ────────────────────────────────────────────────────── */
+.kpi-card { border-radius: var(--radius) !important; }
+
+.kpi-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Category Badge ─────────────────────────────────────────────────────────── */
+.cat-badge {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  font-weight: 500;
+}
+
+/* col-lg-2-4 for 5-column grid */
+@media (min-width: 992px) {
+  .col-lg-2-4 { width: 20%; }
+}
