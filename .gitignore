@@ -3,11 +3,6 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
 # Virtual environment
 venv/
 env/
