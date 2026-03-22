@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Complaint Classified – FinComplaints AI{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+
+        <div class="text-center mb-4">
+          <div class="success-icon mx-auto mb-3">
+            <i class="bi bi-check-lg fs-1 text-success"></i>
+          </div>
+          <h2 class="fw-bold">Complaint Submitted!</h2>
+          <p class="text-muted">Your complaint has been received and classified by our AI model.</p>
+        </div>
+
+        <div class="card border-0 shadow result-card mb-4">
+          <div class="card-header result-header py-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold fs-5"><i class="bi bi-robot me-2"></i>AI Classification Result</span>
+              <span class="badge bg-success fs-6">Complaint #{{ result.id }}</span>
+            </div>
+          </div>
+          <div class="card-body p-4">
+
+            <div class="row g-3 mb-4">
+              <div class="col-12">
+                <label class="small fw-semibold text-muted text-uppercase">Title</label>
+                <p class="mb-0 fw-semibold">{{ result.title }}</p>
+              </div>
+              <div class="col-12">
+                <label class="small fw-semibold text-muted text-uppercase">Description</label>
+                <p class="mb-0 text-muted">{{ result.description }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="text-center my-4">
+              <p class="text-muted small mb-1">Predicted Category</p>
+              <div class="category-badge mx-auto">{{ result.category }}</div>
+              <p class="text-muted small mt-2">
+                Confidence: <strong class="text-primary">{{ result.confidence }}%</strong>
+              </p>
+            </div>
+
+            <h6 class="fw-bold mb-3">Confidence Scores by Category</h6>
+            <div id="scoresBars">
+              {% for cat, score in result.scores.items() | sort(attribute=1, reverse=True) %}
+              <div class="mb-2">
+                <div class="d-flex justify-content-between small mb-1">
+                  <span {% if cat == result.category %}class="fw-semibold text-primary"{% endif %}>{{ cat }}</span>
+                  <span>{{ score }}%</span>
+                </div>
+                <div class="progress" style="height:10px; border-radius:6px;">
+                  <div class="progress-bar {% if cat == result.category %}bg-primary{% else %}bg-secondary bg-opacity-50{% endif %}"
+                       role="progressbar"
+                       style="width: {{ score }}%"
+                       data-width="{{ score }}"></div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="{{ url_for('submit') }}" class="btn btn-primary px-4">
+            <i class="bi bi-plus-circle me-2"></i>Submit Another
+          </a>
+          <a href="{{ url_for('my_complaints') }}" class="btn btn-outline-secondary px-4">
+            <i class="bi bi-list-ul me-2"></i>View My Complaints
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+  $('#scoresBars .progress-bar').each(function(){
+    const w = $(this).data('width');
+    $(this).css('width', 0).animate({'width': w + '%'}, 800);
+  });
+});
+</script>
+{% endblock %}
