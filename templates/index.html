@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}FinComplaints AI – Home{% endblock %}
+
+{% block content %}
+<!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+<section class="hero-section text-white text-center py-5">
+  <div class="container py-4">
+    <div class="hero-badge mb-3"><i class="bi bi-cpu me-2"></i>Powered by Machine Learning</div>
+    <h1 class="display-4 fw-bold mb-3">Financial Complaint<br><span class="text-warning">Classification System</span></h1>
+    <p class="lead mb-4 opacity-75">Submit your financial complaints and let our AI instantly categorise them for faster resolution.</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('submit') }}" class="btn btn-warning btn-lg px-4 fw-semibold"><i class="bi bi-plus-circle me-2"></i>Submit a Complaint</a>
+        <a href="{{ url_for('my_complaints') }}" class="btn btn-outline-light btn-lg px-4">View My Complaints</a>
+      {% else %}
+        <a href="{{ url_for('register') }}" class="btn btn-warning btn-lg px-4 fw-semibold"><i class="bi bi-person-plus me-2"></i>Get Started</a>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg px-4">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ── Category cards ───────────────────────────────────────────────────────── -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Complaint Categories</h2>
+      <p class="text-muted">Our AI model classifies complaints into 5 financial domains</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+      {% set categories = [
+        ('bi-bank', 'primary',   'Loans',                'Home, auto, student & personal loan disputes'),
+        ('bi-file-earmark-bar-graph', 'success', 'Credit Reporting', 'Credit score errors & bureau disputes'),
+        ('bi-building', 'info',   'Bank Services',        'Account issues, fees & banking problems'),
+        ('bi-telephone-x', 'danger',  'Debt Collection',      'Harassment & unfair collection practices'),
+        ('bi-credit-card', 'warning', 'Credit Card Services', 'Card billing, rewards & dispute issues'),
+      ] %}
+      {% for icon, color, title, desc in categories %}
+      <div class="col-sm-6 col-md-4 col-lg-2-4">
+        <div class="card h-100 border-0 shadow-sm category-card text-center p-3">
+          <div class="cat-icon bg-{{ color }} bg-opacity-10 text-{{ color }} mx-auto mb-3">
+            <i class="bi {{ icon }} fs-4"></i>
+          </div>
+          <h6 class="fw-bold mb-1">{{ title }}</h6>
+          <p class="small text-muted mb-0">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ─────────────────────────────────────────────────────────── -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">How It Works</h2>
+      <p class="text-muted">Three simple steps to get your complaint classified</p>
+    </div>
+    <div class="row g-4 justify-content-center text-center">
+      {% for num, icon, title, desc in [
+        ('1', 'bi-person-plus', 'Register & Login', 'Create a free account and log in securely.'),
+        ('2', 'bi-pencil-square', 'Submit Complaint', 'Describe your financial issue in detail.'),
+        ('3', 'bi-robot',       'AI Classification', 'Our model instantly categorises your complaint.'),
+      ] %}
+      <div class="col-md-4">
+        <div class="step-card p-4">
+          <div class="step-number mx-auto mb-3">{{ num }}</div>
+          <i class="bi {{ icon }} fs-2 text-primary mb-3 d-block"></i>
+          <h5 class="fw-bold">{{ title }}</h5>
+          <p class="text-muted mb-0">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
