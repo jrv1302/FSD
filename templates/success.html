@@ -50,11 +50,13 @@
               {% for cat, score in result.scores.items() | sort(attribute=1, reverse=True) %}
               <div class="mb-2">
                 <div class="d-flex justify-content-between small mb-1">
-                  <span {% if cat == result.category %}class="fw-semibold text-primary"{% endif %}>{{ cat }}</span>
+                  <span {% if cat == result.category %}class="fw-semibold text-primary"{% endif %}>
+                    {{ cat }} {% if cat == result.category %}<span class="badge bg-primary ms-1" style="font-size:0.65rem;">Predicted</span>{% endif %}
+                  </span>
                   <span>{{ score }}%</span>
                 </div>
                 <div class="progress" style="height:10px; border-radius:6px;">
-                  <div class="progress-bar {% if cat == result.category %}bg-primary{% else %}bg-secondary bg-opacity-50{% endif %}"
+                  <div class="progress-bar {% if cat == result.category %}bg-primary{% else %}bg-secondary bg-opacity-25{% endif %}"
                        role="progressbar"
                        style="width: {{ score }}%"
                        data-width="{{ score }}"></div>

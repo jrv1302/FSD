@@ -15,8 +15,8 @@ def _load():
 
 def predict(text: str) -> dict:
     _load()
-    label = _pipeline.predict([text])[0]
     proba = _pipeline.predict_proba([text])[0]
     scores = {cat: round(float(p) * 100, 1) for cat, p in zip(_categories, proba)}
-    confidence = round(float(max(proba)) * 100, 1)
+    label = max(scores, key=scores.get)
+    confidence = scores[label]
     return {"category": label, "confidence": confidence, "scores": scores}

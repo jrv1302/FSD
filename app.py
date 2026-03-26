@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
 app = Flask(__name__)
-app.secret_key = "fc-secret-key-2024-change-in-prod"
+app.secret_key = "fc-secret-key-2026-change-in-prod"
 
 DB_PATH = os.path.join(BASE_DIR, "complaints.db")
 
