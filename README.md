@@ -215,15 +215,45 @@ http://localhost:5000
 
 ## 📸 Screenshots
 
-> Run the app locally and visit the following pages:
+### 🏠 Home Page
+![Home Page](static/images/Homepage.png)
+*Landing page with hero section, complaint categories, and how-it-works steps.*
 
-| Page | URL |
-|---|---|
-| Home | `http://localhost:5000/` |
-| Register | `http://localhost:5000/register` |
-| Submit Complaint | `http://localhost:5000/submit` |
-| Result Page | `http://localhost:5000/success` |
-| Admin Dashboard | `http://localhost:5000/dashboard` |
+---
+
+### 🔐 Login Page
+![Login Page](static/images/Login.png)
+*Clean login form with password visibility toggle and admin credentials hint.*
+
+---
+
+### 📝 Register Page
+![Register Page](static/images/Register.png)
+*Registration form with real-time password strength indicator and validation.*
+
+---
+
+### 📤 Submit Complaint
+![Submit Complaint](static/images/Submit.png)
+*Complaint submission form with character counter, AI classification notice, and tips.*
+
+---
+
+### ✅ Classification Result
+![Classification Result](static/images/User.png)
+*AI result page showing predicted category, confidence score, and animated progress bars.*
+
+---
+
+### 📋 My Complaints
+![My Complaints](static/images/Complaint.png)
+*User complaint history with search, status filter, and category filter.*
+
+---
+
+### 🛡️ Admin Dashboard
+![Admin Dashboard](static/images/Admin.png)
+*Admin panel with KPI cards, complaints-by-category bar chart, and status distribution donut chart.*
 
 ---
 
