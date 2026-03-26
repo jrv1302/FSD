@@ -1,16 +1,9 @@
-/**
- * script.js – FinComplaints AI
- * jQuery-powered form validation, DOM manipulation & UI interactions.
- */
-
 $(document).ready(function () {
 
-  /* ── Auto-dismiss flash alerts after 4 s ────────────────────────────────── */
   setTimeout(function () {
     $('#flash-container .alert').fadeOut(500, function () { $(this).remove(); });
   }, 4000);
 
-  /* ── Password visibility toggle ─────────────────────────────────────────── */
   $(document).on('click', '.toggle-pw', function () {
     const targetId = $(this).data('target');
     const input    = $('#' + targetId);
@@ -24,7 +17,6 @@ $(document).ready(function () {
     }
   });
 
-  /* ── Password strength indicator (register page) ────────────────────────── */
   $('#regPw').on('input', function () {
     const pw  = $(this).val();
     const bar = $('#pwStrengthBar');
@@ -55,11 +47,9 @@ $(document).ready(function () {
     lbl.text(lvl.label);
   });
 
-  /* ── Registration form validation ───────────────────────────────────────── */
   $('#registerForm').on('submit', function (e) {
     let valid = true;
 
-    // Name
     const name = $('[name="name"]').val().trim();
     if (!name) {
       $('[name="name"]').addClass('is-invalid');
@@ -68,7 +58,6 @@ $(document).ready(function () {
       $('[name="name"]').removeClass('is-invalid').addClass('is-valid');
     }
 
-    // Email
     const email = $('[name="email"]').val().trim();
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(email)) {
@@ -78,7 +67,6 @@ $(document).ready(function () {
       $('[name="email"]').removeClass('is-invalid').addClass('is-valid');
     }
 
-    // Password length
     const pw = $('#regPw').val();
     if (pw.length < 6) {
       $('#regPw').addClass('is-invalid');
@@ -87,7 +75,6 @@ $(document).ready(function () {
       $('#regPw').removeClass('is-invalid').addClass('is-valid');
     }
 
-    // Confirm password
     const cpw = $('#confirmPw').val();
     if (pw !== cpw) {
       $('#confirmPw').addClass('is-invalid');
@@ -100,7 +87,6 @@ $(document).ready(function () {
     if (!valid) e.preventDefault();
   });
 
-  /* ── Login form validation ───────────────────────────────────────────────── */
   $('#loginForm').on('submit', function (e) {
     let valid = true;
     const email = $('[name="email"]').val().trim();
@@ -123,7 +109,6 @@ $(document).ready(function () {
     if (!valid) e.preventDefault();
   });
 
-  /* ── Complaint form validation ───────────────────────────────────────────── */
   $('#complaintForm').on('submit', function (e) {
     let valid = true;
 
@@ -147,13 +132,11 @@ $(document).ready(function () {
       e.preventDefault();
       $('html, body').animate({ scrollTop: 0 }, 300);
     } else {
-      // Show loading state
       const btn = $('#submitBtn');
       btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Classifying…');
     }
   });
 
-  /* ── Character counters ──────────────────────────────────────────────────── */
   $('#complaintTitle').on('input', function () {
     $('#titleCount').text($(this).val().length);
   });
@@ -161,7 +144,6 @@ $(document).ready(function () {
     $('#descCount').text($(this).val().length);
   });
 
-  /* ── Clear invalid class on input ───────────────────────────────────────── */
   $('input, textarea').on('input', function () {
     $(this).removeClass('is-invalid');
   });
